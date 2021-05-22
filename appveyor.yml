@@ -5,8 +5,8 @@ environment:
   matrix:
     - solution_path: one_plus_two/one_plus_two.sln
   
-  before_build:
-    - nuget restore %solution_path%
+before_build:
+  - nuget restore %solution_path%
 
-  build_script:
-    - msbuild %solution_path%
+build_script:
+  - msbuild %solution_path%
