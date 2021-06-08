@@ -1,17 +1,17 @@
 from controller import Robot
-import struct   
+import struct
 import random
 
 
-# create the Robot instance.
+# create the Robot instance
 robot = Robot()
 
 
-# get the time step of the current world.
+# get the time step of the current world
 timestep = int(robot.getBasicTimeStep())
 
 
-# initialize emmiters    
+# initialize emmiters
 emit = robot.getEmitter('emit')
 
 emit_main = robot.getEmitter('emit_main')
@@ -26,7 +26,7 @@ rec = []
 for i in range(k):
     rec.append(robot.getReceiver('rec' + str(i + 1)))
     rec[i].enable(timestep)
-    
+
 rec_main = robot.getReceiver('rec_main')
 rec_main.enable(timestep)
 
@@ -59,13 +59,13 @@ while robot.step(timestep) != -1:
         q = dataList[1]
         rec_main.nextPacket()
     #print(bearing)
-    
+
     # Передаем сообщение соседям
     p = random.uniform(0, 1)
     if p > 0.04:
         message = struct.pack("dd", bearing, q)
         emit.send(message)
-    
+
     # Принимаем сообщение от соседей
     if time_wait_switch != 0:
         time_wait_switch -= 1
@@ -75,7 +75,7 @@ while robot.step(timestep) != -1:
         bearingn[index_robot_rec][0] = dataList[0]
         bearingn[index_robot_rec][1] = dataList[1]
         rec[index_robot_rec].nextPacket()
-        
+
         index_robot_rec += 1
         index_robot_rec %= k
         time_wait_switch = 2
