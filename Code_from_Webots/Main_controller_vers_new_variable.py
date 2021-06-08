@@ -189,7 +189,7 @@ while robot.step(timestep) != -1:
             bearing_comrades[i][1] = dataList[1]
             rec_main.nextPacket()
     #print("Robot", *bearingn)
-    
+
     # Считаем среднюю уверенность соседей q_sr
     q_sum = 0
     k_i = num_of_robots
@@ -204,7 +204,7 @@ while robot.step(timestep) != -1:
     else:
         q_sr = 1
     #print ("q_sr", q_sr)
-    
+
     # Считаем средневзвешенный курс соседей dbearingn_sr_w
     dbearingn_sr_w = 0
     cos_sum_sr_w = 0
@@ -222,12 +222,12 @@ while robot.step(timestep) != -1:
     if k_i_w != 0:
         cos_sum_sr_w = cos_sum_w / k_i_w
         sin_sum_sr_w = sin_sum_w / k_i_w
-    
+
     # Расчитываем курс в группе dbearingG исходя из данных группы
     # alpha - коэфициент, p - уверенность к курсу при пересчете от группы
     alpha = 0.5
     dbearingG = 0
-    
+
     if k_i_w == 0:
         dbearingG = dbearing
     else:
@@ -243,7 +243,7 @@ while robot.step(timestep) != -1:
             dbearingG = 180 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G < 0:
             dbearingG = 180 + math.degrees(math.acos(cos_db_G))
-        
+
     if d < 50 and d > 30:
         if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
@@ -258,7 +258,7 @@ while robot.step(timestep) != -1:
         elif j == 1:
             dbearingG -= 10
     # print(j)
-    
+
     if dbearingG > 360:
         dbearingG -= 360
 
@@ -281,7 +281,7 @@ while robot.step(timestep) != -1:
     else:
         leftSpeed = 0
         rightSpeed = 0
-    
+
     # Обход препятствий
     #print(p, d)
     if d <= 30 and avoidObstacleCounter == 0 and detourObstacleCounter == 0:
@@ -292,7 +292,7 @@ while robot.step(timestep) != -1:
                 p = 0 # право
             else:
                 p = 1 # лево
-   
+
     if avoidObstacleCounter != 0 or detourObstacleCounter != 0:
         if avoidObstacleCounter != 0:
             avoidObstacleCounter -= 1
@@ -309,10 +309,10 @@ while robot.step(timestep) != -1:
 
             leftSpeed = 2
             rightSpeed = 2
-            
+
     #print(avoidObstacleCounter)
     #print(detourObstacleCounter)
-            
+
     # Отправляем значение на моторы
     wheels[0].setVelocity(leftSpeed)
     wheels[1].setVelocity(rightSpeed)
