@@ -4,7 +4,7 @@ import struct
 import numpy
 import random
 
-    
+
 # Преобразование данных ls в соответствии с реальным датчиком
 def transform_light(light):
     if light > 1000: light = 1000
@@ -230,7 +230,7 @@ while robot.step(timestep) != -1:
     
     if k_i_w == 0:
         dbearingG = dbearing
-    else:     
+    else:
         cos_dbearing = math.cos(math.radians(dbearing))
         sin_dbearing = math.sin(math.radians(dbearing))
         cos_db_G = ((1 - alpha) * cos_dbearing * q + alpha * cos_sum_sr_w) / ((1 - alpha) * q + alpha * q_sr)
@@ -287,7 +287,7 @@ while robot.step(timestep) != -1:
     if d <= 30 and avoidObstacleCounter == 0 and detourObstacleCounter == 0:
         avoidObstacleCounter = 30
         detourObstacleCounter = 150
-        if comp_angle(light) < 90 or comp_angle(light) > 270: 
+        if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
                 p = 0 # право
             else:
