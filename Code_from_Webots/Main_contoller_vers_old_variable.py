@@ -1,6 +1,6 @@
 from controller import Robot
 import math
-import struct   
+import struct
 import numpy
 import random
     
@@ -126,7 +126,7 @@ com.enable(timestep)
 
 # Начальное значение на двигатели
 leftSpeed = 0
-rightSpeed = 0 
+rightSpeed = 0
 
 
 # Переменные для задания обхода препятствия
@@ -147,7 +147,7 @@ while robot.step(timestep) != -1:
     if bearing < 0.0:
         bearing += 360 
     cos_com = north[0]
-    sin_com = north[2]    
+    sin_com = north[2]
     #print(cos_com, sin_com)
     
     # Ищем максимум из датчиков
@@ -257,26 +257,26 @@ while robot.step(timestep) != -1:
             dbearingG += 10
         elif j == 1:
             dbearingG -= 10
-    # print(j)   
+    # print(j)
     
     if dbearingG > 360:
         dbearingG -= 360
           
     # Задаем движение
     if bearing == dbearingG and sum(light) > 0:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 3.14
     elif dbearingG > bearing and dbearingG < bearing + 180:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 2
     elif dbearingG > bearing and dbearingG > bearing + 180: 
         leftSpeed = 2
-        rightSpeed = 3.14 
+        rightSpeed = 3.14
     elif bearing > dbearingG and bearing < dbearingG + 180:
         leftSpeed = 2
-        rightSpeed = 3.14 
+        rightSpeed = 3.14
     elif bearing > dbearingG and bearing > dbearingG + 180:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 2
     else: 
         leftSpeed = 0
@@ -299,20 +299,20 @@ while robot.step(timestep) != -1:
                     
             if p == 1:
                 leftSpeed = -2
-                rightSpeed = 2  
+                rightSpeed = 2
             elif p == 0:
                 leftSpeed = 2
-                rightSpeed = -2 
+                rightSpeed = -2
                 
         elif detourObstacleCounter != 0:
             detourObstacleCounter -= 1
                     
             leftSpeed = 2
-            rightSpeed = 2  
+            rightSpeed = 2
             
     #print(avoidObstacleCounter)
     #print(detourObstacleCounter)
-            
+
     # Отправляем значение на моторы
     wheels[0].setVelocity(leftSpeed)
     wheels[1].setVelocity(rightSpeed)
