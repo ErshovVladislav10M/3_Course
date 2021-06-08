@@ -3,8 +3,8 @@ import math
 import struct
 import numpy
 import random
-    
-    
+
+
 # Преобразование данных ls в соответствии с реальным датчиком
 def transform_light(light):
     if light > 1000: light = 1000
@@ -102,12 +102,12 @@ num_of_robots = 2
 bearing_comrades = [[0] * num_of_robots, [0] * num_of_robots]
 
 
-# initialize receiver 
+# initialize receiver
 rec_main = robot.getReceiver('rec_main')
 rec_main.enable(timestep)
 
 
-# initialize distance sensor   
+# initialize distance sensor
 ds = robot.getDistanceSensor('ds')
 ds.enable(timestep)
     
@@ -119,14 +119,14 @@ for i in range(4):
     ls[i].enable(timestep)
 
 
-# initialize compass   
+# initialize compass
 com = robot.getCompass('com')
 com.enable(timestep)
 
 
 # Начальное значение на двигатели
 leftSpeed = 0
-rightSpeed = 0 
+rightSpeed = 0
 
 
 # Переменные для задания обхода препятствия
@@ -145,9 +145,9 @@ while robot.step(timestep) != -1:
     rad = math.atan2(north[0], north[2])
     bearing = (rad - 1.5708) / math.pi * 180.0;
     if bearing < 0.0:
-        bearing += 360 
+        bearing += 360
     cos_com = north[0]
-    sin_com = north[2]    
+    sin_com = north[2]
     #print(cos_com, sin_com)
     
     # Ищем максимум из датчиков
@@ -173,7 +173,7 @@ while robot.step(timestep) != -1:
     if comp_angle(light) > 90 and comp_angle(light) < 180:
         q = 0
     else:
-        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)    
+        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)
     
     # Передаем сообщение на микрочип для связи
     #print(bearing)
@@ -218,7 +218,7 @@ while robot.step(timestep) != -1:
         if bearing_comrades[i][1] > 0:
             cos_sum_w += math.cos(math.radians(bearing_comrades[i][0])) * bearing_comrades[i][1]
             sin_sum_w += math.sin(math.radians(bearing_comrades[i][0])) * bearing_comrades[i][1]
-            k_i_w += 1 
+            k_i_w += 1
     if k_i_w != 0:
         cos_sum_sr_w = cos_sum_w / k_i_w
         sin_sum_sr_w = sin_sum_w / k_i_w
@@ -230,9 +230,9 @@ while robot.step(timestep) != -1:
     
     if k_i_w == 0:
         dbearingG = dbearing
-    else:     
+    else:
         cos_dbearing = math.cos(math.radians(dbearing))
-        sin_dbearing = math.sin(math.radians(dbearing))  
+        sin_dbearing = math.sin(math.radians(dbearing))
         cos_db_G = ((1 - alpha) * cos_dbearing * q + alpha * cos_sum_sr_w) / ((1 - alpha) * q + alpha * q_sr)
         sin_db_G = ((1 - alpha) * sin_dbearing * q + alpha * sin_sum_sr_w) / ((1 - alpha) * q + alpha * q_sr)
         if cos_db_G > 0 and sin_db_G > 0:
@@ -240,12 +240,12 @@ while robot.step(timestep) != -1:
         elif cos_db_G > 0 and sin_db_G < 0:
             dbearingG = 360 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G > 0:
-            dbearingG = 180 - math.degrees(math.acos(cos_db_G))   
+            dbearingG = 180 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G < 0:
             dbearingG = 180 + math.degrees(math.acos(cos_db_G))
         
     if d < 50 and d > 30:
-        if comp_angle(light) < 90 or comp_angle(light) > 270: 
+        if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
                 j = 1 # право
             else:
@@ -257,24 +257,24 @@ while robot.step(timestep) != -1:
             dbearingG += 10
         elif j == 1:
             dbearingG -= 10
-    # print(j)   
+    # print(j)
     
     if dbearingG > 360:
         dbearingG -= 360
           
     # Задаем движение
     if bearing == dbearingG and sum(light) > 0:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 3.14
     elif dbearingG > bearing and dbearingG < bearing + 180:
         leftSpeed = 3.14 
         rightSpeed = 2
-    elif dbearingG > bearing and dbearingG > bearing + 180: 
+    elif dbearingG > bearing and dbearingG > bearing + 180:
         leftSpeed = 2
         rightSpeed = 3.14
     elif bearing > dbearingG and bearing < dbearingG + 180:
         leftSpeed = 2
-        rightSpeed = 3.14 
+        rightSpeed = 3.14
     elif bearing > dbearingG and bearing > dbearingG + 180:
         leftSpeed = 3.14 
         rightSpeed = 2
@@ -299,10 +299,10 @@ while robot.step(timestep) != -1:
                     
             if p == 1:
                 leftSpeed = -2
-                rightSpeed = 2  
+                rightSpeed = 2
             elif p == 0:
                 leftSpeed = 2
-                rightSpeed = -2 
+                rightSpeed = -2
                 
         elif detourObstacleCounter != 0:
             detourObstacleCounter -= 1
