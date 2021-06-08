@@ -107,7 +107,7 @@ rec_main = robot.getReceiver('rec_main')
 rec_main.enable(timestep)
 
 
-# initialize distance sensor   
+# initialize distance sensor
 ds = robot.getDistanceSensor('ds')
 ds.enable(timestep)
     
@@ -143,9 +143,9 @@ while robot.step(timestep) != -1:
     # Расчитываем азимут
     north = com.getValues()
     rad = math.atan2(north[0], north[2])
-    bearing = (rad - 1.5708) / math.pi * 180.0;
+    bearing = (rad - 1.5708) / math.pi * 180.0
     if bearing < 0.0:
-        bearing += 360 
+        bearing += 360
     cos_com = north[0]
     sin_com = north[2]
     #print(cos_com, sin_com)
@@ -173,7 +173,7 @@ while robot.step(timestep) != -1:
     if comp_angle(light) > 90 and comp_angle(light) < 180:
         q = 0
     else:
-        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)    
+        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)
     
     # Передаем сообщение на микрочип для связи
     #print(bearing)
@@ -245,7 +245,7 @@ while robot.step(timestep) != -1:
             dbearingG = 180 + math.degrees(math.acos(cos_db_G))
         
     if d < 50 and d > 30:
-        if comp_angle(light) < 90 or comp_angle(light) > 270: 
+        if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
                 j = 1 # право
             else:
