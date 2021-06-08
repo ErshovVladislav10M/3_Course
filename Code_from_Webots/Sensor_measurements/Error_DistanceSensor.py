@@ -51,9 +51,9 @@ for i in Y2:
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
-for i in range(len(Y2)):
-    if Y2[i] in X1:
-       Y1[X1.index(Y2[i])] += 1
+for i in rangeY2:
+    if i in X1:
+       Y1[X1.index(i)] += 1
 
 #plt.plot(X1, Y1, color = 'red', marker = '', linestyle = '-', markerfacecolor = 'red', label = 'В симуляции c погрешностью 9.23%')
 plt.xticks(X1, X1)
