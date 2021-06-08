@@ -20,9 +20,9 @@ for i in Y2:
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
-for i in range(len(Y2)):
-    if Y2[i] in X1:
-       Y1[X1.index(Y2[i])] += 1
+for i in Y2:
+    if i in X1:
+       Y1[X1.index(i)] += 1
 
 X2 = []
 for i in X1:
