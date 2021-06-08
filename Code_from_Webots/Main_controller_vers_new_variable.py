@@ -252,7 +252,7 @@ while robot.step(timestep) != -1:
                 j = 2 # лево
         else:
             j = 0
-       
+
         if j == 2:
             dbearingG += 10
         elif j == 1:
