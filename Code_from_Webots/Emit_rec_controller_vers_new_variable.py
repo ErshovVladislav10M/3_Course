@@ -21,12 +21,12 @@ emit_main = robot.getEmitter('emit_main')
 num_of_robots = 2
 
 
-# initialize receiver 
-rec = []  
+# initialize receiver
+rec = []
 for i in range(num_of_robots):
     rec.append(robot.getReceiver('rec' + str(i + 1)))
     rec[i].enable(timestep)
-    
+
 rec_main = robot.getReceiver('rec_main')
 rec_main.enable(timestep)
 
