@@ -1,5 +1,4 @@
 from controller import Robot
-import math
 import struct   
 import random
 
