@@ -14,9 +14,9 @@ medium_val_r = round(sum(Y2) / len(Y2))
 error_comp_r = (max(Y2) - medium_val_r) / medium_val_r * 100
 
 X1 = []
-for i in range(len(Y2)):
-    if Y2[i] not in X1:
-       X1.append(Y2[i])
+for i in Y2:
+    if i not in X1:
+       X1.append(i)
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
@@ -25,8 +25,8 @@ for i in range(len(Y2)):
        Y1[X1.index(Y2[i])] += 1
 
 X2 = []
-for i in range(len(X1)):
-    X2.append((X1[i] - medium_val_r) / medium_val_r * 100)
+for i in X1:
+    X2.append((i - medium_val_r) / medium_val_r * 100)
 
 max_number_r = max(Y1)
 
