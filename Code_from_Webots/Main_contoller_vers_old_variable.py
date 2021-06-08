@@ -149,7 +149,7 @@ while robot.step(timestep) != -1:
     cos_com = north[0]
     sin_com = north[2]
     #print(cos_com, sin_com)
-    
+
     # Ищем максимум из датчиков
     light = []
     for i in range(4):
