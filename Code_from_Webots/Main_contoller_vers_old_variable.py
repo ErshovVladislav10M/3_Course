@@ -156,8 +156,8 @@ while robot.step(timestep) != -1:
         light.append(inaccuracy_ls(transform_light(ls[i].getValue())))
     #print(light[0])
     #print(comp_angle(light)[0])
-    
-    
+
+
     # Расчет азимута движения на источник по четырем сенсорам света.
     dbearing = comp_angle(light)
  
