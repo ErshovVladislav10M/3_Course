@@ -15,7 +15,7 @@ def transform_light(light):
                  22.5, 45, 60, 67.5, 80, 90]
     return numpy.interp(angle, angle_val, light_val) * 1000 / 117
 
-    
+
 # Нахождение угла по датчикам ls
 def comp_angle(light):
     if max(light) == sum(light):
