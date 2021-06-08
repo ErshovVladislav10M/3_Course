@@ -74,11 +74,11 @@ def inaccuracy_ds(d, error_comp=0.0923):
         return round(d)
 
 
-# create the Robot instance.
+# create the Robot instance
 robot = Robot()
 
 
-# get the time step of the current world.
+# get the time step of the current world
 timestep = int(robot.getBasicTimeStep())
 
 
