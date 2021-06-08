@@ -110,7 +110,7 @@ rec_main.enable(timestep)
 # initialize distance sensor
 ds = robot.getDistanceSensor('ds')
 ds.enable(timestep)
-    
+
 
 # initialize light sensor
 ls = []
