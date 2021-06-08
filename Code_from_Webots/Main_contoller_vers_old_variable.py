@@ -14,8 +14,8 @@ def transform_light(light):
     angle_val = [-90, -80, -67.5, -60, -45, -22.5, 0,
                  22.5, 45, 60, 67.5, 80, 90]
     return numpy.interp(angle, angle_val, light_val) * 1000 / 117
-    
-    
+
+
 # Нахождение угла по датчикам ls
 def comp_angle(light):
     if max(light) == sum(light):
@@ -278,7 +278,7 @@ while robot.step(timestep) != -1:
     elif bearing > dbearingG and bearing > dbearingG + 180:
         leftSpeed = 3.14
         rightSpeed = 2
-    else: 
+    else:
         leftSpeed = 0
         rightSpeed = 0
     
