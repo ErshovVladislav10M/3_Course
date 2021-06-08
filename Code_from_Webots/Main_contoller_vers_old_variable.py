@@ -90,7 +90,7 @@ for i in range(2):
     wheels[i].setVelocity(0.0)
 
 
-# initialize emmiters    
+# initialize emmiters
 emit_main = robot.getEmitter('emit_main')
 
 
@@ -119,7 +119,7 @@ for i in range(4):
     ls[i].enable(timestep)
 
 
-# initialize compass   
+# initialize compass
 com = robot.getCompass('com')
 com.enable(timestep)
 
@@ -240,7 +240,7 @@ while robot.step(timestep) != -1:
         elif cos_db_G > 0 and sin_db_G < 0:
             dbearingG = 360 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G > 0:
-            dbearingG = 180 - math.degrees(math.acos(cos_db_G))   
+            dbearingG = 180 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G < 0:
             dbearingG = 180 + math.degrees(math.acos(cos_db_G))
         
@@ -269,7 +269,7 @@ while robot.step(timestep) != -1:
     elif dbearingG > bearing and dbearingG < bearing + 180:
         leftSpeed = 3.14
         rightSpeed = 2
-    elif dbearingG > bearing and dbearingG > bearing + 180: 
+    elif dbearingG > bearing and dbearingG > bearing + 180:
         leftSpeed = 2
         rightSpeed = 3.14
     elif bearing > dbearingG and bearing < dbearingG + 180:
