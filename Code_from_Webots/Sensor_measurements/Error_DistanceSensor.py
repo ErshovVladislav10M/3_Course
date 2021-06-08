@@ -45,9 +45,9 @@ file_simulation = open(file_name + '\test_sensor\ds_simulation\ds_' + d_test + '
 Y2 = [float(line) for line in file_simulation]
 
 X1 = []
-for i in range(len(Y2)):
-    if Y2[i] not in X1:
-       X1.append(int(Y2[i]))
+for i in Y2:
+    if i not in X1:
+       X1.append(int(i))
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
