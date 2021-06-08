@@ -179,7 +179,7 @@ while robot.step(timestep) != -1:
     #print(bearing)
     message = struct.pack("dd", bearing, q)
     emit_main.send(message)
-    
+
     # Принимаем сообщение от микрочипа связи
     for i in range(num_of_robots):
         if rec_main.getQueueLength() > 0:
