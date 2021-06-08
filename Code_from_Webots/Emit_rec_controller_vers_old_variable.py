@@ -1,7 +1,4 @@
 from controller import Robot
-from controller import Emitter
-from controller import Receiver
-from random import randint
 import math
 import struct   
 import random
