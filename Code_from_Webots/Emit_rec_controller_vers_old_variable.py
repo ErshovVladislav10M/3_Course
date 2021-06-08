@@ -21,7 +21,7 @@ emit_main = robot.getEmitter('emit_main')
 k = 2
 
 
-# initialize receiver 
+# initialize receiver
 rec = []
 for i in range(k):
     rec.append(robot.getReceiver('rec' + str(i + 1)))
@@ -83,5 +83,5 @@ while robot.step(timestep) != -1:
     
     # Перадаем сообщение на основной микрочип
     for i in range(k):
-        message = struct.pack("dd", bearingn[i][0], bearingn[i][1])          
+        message = struct.pack("dd", bearingn[i][0], bearingn[i][1])
         emit_main.send(message)
