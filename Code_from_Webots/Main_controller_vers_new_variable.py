@@ -110,7 +110,7 @@ rec_main.enable(timestep)
 # initialize distance sensor
 ds = robot.getDistanceSensor('ds')
 ds.enable(timestep)
-    
+
 
 # initialize light sensor
 ls = []
@@ -143,24 +143,24 @@ while robot.step(timestep) != -1:
     # Расчитываем азимут
     north = com.getValues()
     rad = math.atan2(north[0], north[2])
-    bearing = (rad - 1.5708) / math.pi * 180.0;
+    bearing = (rad - 1.5708) / math.pi * 180.0
     if bearing < 0.0:
         bearing += 360
     cos_com = north[0]
     sin_com = north[2]
     #print(cos_com, sin_com)
-    
+
     # Ищем максимум из датчиков
     light = []
     for i in range(4):
         light.append(inaccuracy_ls(transform_light(ls[i].getValue())))
     #print(light[0])
     #print(comp_angle(light)[0])
-    
-    
-    # Расчет азимута движения на источник по четырем сенсорам света.
+
+
+    # Расчет азимута движения на источник по четырем сенсорам света
     dbearing = comp_angle(light)
- 
+
     # Вводим уверенность в курсем по датчикам света q_az b
     # и q_dis - уверенность по датчику направления. a_q - коэфициент
     # d - показаия датчика дистанции.
@@ -169,7 +169,7 @@ while robot.step(timestep) != -1:
     d = inaccuracy_ds(ds.getValue())
     #print(round(d))
     #print(ds.getValue())
-    
+
     if comp_angle(light) > 90 and comp_angle(light) < 180:
         q = 0
     else:
