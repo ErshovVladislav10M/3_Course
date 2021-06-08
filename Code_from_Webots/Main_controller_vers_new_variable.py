@@ -174,7 +174,7 @@ while robot.step(timestep) != -1:
         q = 0
     else:
         q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)
-    
+
     # Передаем сообщение на микрочип для связи
     #print(bearing)
     message = struct.pack("dd", bearing, q)
