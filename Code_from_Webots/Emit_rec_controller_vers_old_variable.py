@@ -80,7 +80,7 @@ while robot.step(timestep) != -1:
         index_robot_rec %= k
         time_wait_switch = 2
     #print("Robot", *bearingn)
-    
+
     # Перадаем сообщение на основной микрочип
     for i in range(k):
         message = struct.pack("dd", bearingn[i][0], bearingn[i][1])
