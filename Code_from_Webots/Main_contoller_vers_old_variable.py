@@ -3,13 +3,13 @@ import math
 import struct
 import numpy
 import random
-    
+
     
 # Преобразование данных ls в соответствии с реальным датчиком
 def transform_light(light):
     if light > 1000: light = 1000
     angle = 180 * (math.pi / 2 - math.asin(light / 1000)) / math.pi
-    light_val = [0, 23, 45, 66, 85, 115, 117, 115, 
+    light_val = [0, 23, 45, 66, 85, 115, 117, 115,
                  85, 66, 45, 23, 0]
     angle_val = [-90, -80, -67.5, -60, -45, -22.5, 0,
                  22.5, 45, 60, 67.5, 80, 90]
@@ -102,7 +102,7 @@ num_of_robots = 2
 bearingn = [[0] * num_of_robots, [0] * num_of_robots]
 
 
-# initialize receiver 
+# initialize receiver
 rec_main = robot.getReceiver('rec_main')
 rec_main.enable(timestep)
 
@@ -218,7 +218,7 @@ while robot.step(timestep) != -1:
         if bearingn[i][1] > 0:
             cos_sum_w += math.cos(math.radians(bearingn[i][0])) * bearingn[i][1]
             sin_sum_w += math.sin(math.radians(bearingn[i][0])) * bearingn[i][1]
-            k_i_w += 1 
+            k_i_w += 1
     if k_i_w != 0:
         cos_sum_sr_w = cos_sum_w / k_i_w
         sin_sum_sr_w = sin_sum_w / k_i_w
@@ -232,7 +232,7 @@ while robot.step(timestep) != -1:
         dbearingG = dbearing
     else:     
         cos_dbearing = math.cos(math.radians(dbearing))
-        sin_dbearing = math.sin(math.radians(dbearing))  
+        sin_dbearing = math.sin(math.radians(dbearing))
         cos_db_G = ((1 - alpha) * cos_dbearing * q + alpha * cos_sum_sr_w) / ((1 - alpha) * q + alpha * q_sr)
         sin_db_G = ((1 - alpha) * sin_dbearing * q + alpha * sin_sum_sr_w) / ((1 - alpha) * q + alpha * q_sr)
         if cos_db_G > 0 and sin_db_G > 0:
