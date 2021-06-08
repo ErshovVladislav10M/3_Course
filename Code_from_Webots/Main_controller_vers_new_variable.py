@@ -14,7 +14,7 @@ def transform_light(light):
     angle_val = [-90, -80, -67.5, -60, -45, -22.5, 0,
                  22.5, 45, 60, 67.5, 80, 90]
     return numpy.interp(angle, angle_val, light_val) * 1000 / 117
-    
+
     
 # Нахождение угла по датчикам ls
 def comp_angle(light):
@@ -261,13 +261,13 @@ while robot.step(timestep) != -1:
     
     if dbearingG > 360:
         dbearingG -= 360
-          
+
     # Задаем движение
     if bearing == dbearingG and sum(light) > 0:
         leftSpeed = 3.14
         rightSpeed = 3.14
     elif dbearingG > bearing and dbearingG < bearing + 180:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 2
     elif dbearingG > bearing and dbearingG > bearing + 180:
         leftSpeed = 2
@@ -276,9 +276,9 @@ while robot.step(timestep) != -1:
         leftSpeed = 2
         rightSpeed = 3.14
     elif bearing > dbearingG and bearing > dbearingG + 180:
-        leftSpeed = 3.14 
+        leftSpeed = 3.14
         rightSpeed = 2
-    else: 
+    else:
         leftSpeed = 0
         rightSpeed = 0
     
@@ -287,7 +287,7 @@ while robot.step(timestep) != -1:
     if d <= 30 and avoidObstacleCounter == 0 and detourObstacleCounter == 0:
         avoidObstacleCounter = 30
         detourObstacleCounter = 150
-        if comp_angle(light) < 90 or comp_angle(light) > 270: 
+        if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
                 p = 0 # право
             else:
@@ -296,19 +296,19 @@ while robot.step(timestep) != -1:
     if avoidObstacleCounter != 0 or detourObstacleCounter != 0:
         if avoidObstacleCounter != 0:
             avoidObstacleCounter -= 1
-                    
+
             if p == 1:
                 leftSpeed = -2
                 rightSpeed = 2
             elif p == 0:
                 leftSpeed = 2
                 rightSpeed = -2
-                
+
         elif detourObstacleCounter != 0:
             detourObstacleCounter -= 1
-                    
+
             leftSpeed = 2
-            rightSpeed = 2  
+            rightSpeed = 2
             
     #print(avoidObstacleCounter)
     #print(detourObstacleCounter)
