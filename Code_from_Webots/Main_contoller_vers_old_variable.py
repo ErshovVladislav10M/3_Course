@@ -1,11 +1,4 @@
 from controller import Robot
-from controller import Motor
-from controller import Emitter
-from controller import Receiver
-from controller import DistanceSensor
-from controller import LightSensor
-from controller import Compass
-from random import randint
 import math
 import struct   
 import numpy
