@@ -1,6 +1,6 @@
 from controller import Robot
 import math
-import struct   
+import struct
 import numpy
 import random
     
@@ -9,7 +9,7 @@ import random
 def transform_light(light):
     if light > 1000: light = 1000
     angle = 180 * (math.pi / 2 - math.asin(light / 1000)) / math.pi
-    light_val = [0, 23, 45, 66, 85, 115, 117, 115, 
+    light_val = [0, 23, 45, 66, 85, 115, 117, 115,
                  85, 66, 45, 23, 0]
     angle_val = [-90, -80, -67.5, -60, -45, -22.5, 0,
                  22.5, 45, 60, 67.5, 80, 90]
@@ -90,7 +90,7 @@ for i in range(2):
     wheels[i].setVelocity(0.0)
 
 
-# initialize emmiters    
+# initialize emmiters
 emit_main = robot.getEmitter('emit_main')
 
 
@@ -271,7 +271,7 @@ while robot.step(timestep) != -1:
         rightSpeed = 2
     elif dbearingG > bearing and dbearingG > bearing + 180: 
         leftSpeed = 2
-        rightSpeed = 3.14 
+        rightSpeed = 3.14
     elif bearing > dbearingG and bearing < dbearingG + 180:
         leftSpeed = 2
         rightSpeed = 3.14 
