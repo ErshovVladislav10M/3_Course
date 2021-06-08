@@ -22,7 +22,7 @@ k = 2
 
 
 # initialize receiver 
-rec = []  
+rec = []
 for i in range(k):
     rec.append(robot.getReceiver('rec' + str(i + 1)))
     rec[i].enable(timestep)
