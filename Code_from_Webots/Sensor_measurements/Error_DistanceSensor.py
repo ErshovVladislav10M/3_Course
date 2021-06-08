@@ -51,7 +51,7 @@ for i in Y2:
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
-for i in rangeY2:
+for i in range Y2:
     if i in X1:
        Y1[X1.index(i)] += 1
 
