@@ -160,7 +160,7 @@ while robot.step(timestep) != -1:
 
     # Расчет азимута движения на источник по четырем сенсорам света.
     dbearing = comp_angle(light)
- 
+
     # Вводим уверенность в курсем по датчикам света q_az b
     # и q_dis - уверенность по датчику направления. a_q - коэфициент
     # d - показаия датчика дистанции.
@@ -169,17 +169,17 @@ while robot.step(timestep) != -1:
     d = inaccuracy_ds(ds.getValue())
     #print(round(d))
     #print(ds.getValue())
-    
+
     if comp_angle(light) > 90 and comp_angle(light) < 180:
         q = 0
     else:
         q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)
-    
+
     # Передаем сообщение на микрочип для связи
     #print(bearing)
     message = struct.pack("dd", bearing, q)
     emit_main.send(message)
-    
+
     # Принимаем сообщение от микрочипа связи
     for i in range(num_of_robots):
         if rec_main.getQueueLength() > 0:
@@ -189,7 +189,7 @@ while robot.step(timestep) != -1:
             bearingn[i][1] = dataList[1]
             rec_main.nextPacket()
     #print("Robot", *bearingn)
-    
+
     # Считаем среднюю уверенность соседей q_sr
     q_sum = 0
     k_i = num_of_robots
@@ -204,7 +204,7 @@ while robot.step(timestep) != -1:
     else:
         q_sr = 1
     #print ("q_sr", q_sr)
-    
+
     # Считаем средневзвешенный курс соседей dbearingn_sr_w
     dbearingn_sr_w = 0
     cos_sum_sr_w = 0
@@ -222,12 +222,12 @@ while robot.step(timestep) != -1:
     if k_i_w != 0:
         cos_sum_sr_w = cos_sum_w / k_i_w
         sin_sum_sr_w = sin_sum_w / k_i_w
-    
+
     # Расчитываем курс в группе dbearingG исходя из данных группы
     # alpha - коэфициент, p - уверенность к курсу при пересчете от группы
     alpha = 0.5
     dbearingG = 0
-    
+
     if k_i_w == 0:
         dbearingG = dbearing
     else:
@@ -243,7 +243,7 @@ while robot.step(timestep) != -1:
             dbearingG = 180 - math.degrees(math.acos(cos_db_G))
         elif cos_db_G < 0 and sin_db_G < 0:
             dbearingG = 180 + math.degrees(math.acos(cos_db_G))
-        
+
     if d < 50 and d > 30:
         if comp_angle(light) < 90 or comp_angle(light) > 270:
             if comp_angle(light) < 180:
@@ -252,16 +252,16 @@ while robot.step(timestep) != -1:
                 j = 2 # лево
         else:
             j = 0
-       
+
         if j == 2:
             dbearingG += 10
         elif j == 1:
             dbearingG -= 10
     # print(j)
-    
+
     if dbearingG > 360:
         dbearingG -= 360
-          
+
     # Задаем движение
     if bearing == dbearingG and sum(light) > 0:
         leftSpeed = 3.14
@@ -281,7 +281,7 @@ while robot.step(timestep) != -1:
     else:
         leftSpeed = 0
         rightSpeed = 0
-    
+
     # Обход препятствий
     #print(p, d)
     if d <= 30 and avoidObstacleCounter == 0 and detourObstacleCounter == 0:
@@ -292,24 +292,24 @@ while robot.step(timestep) != -1:
                 p = 0 # право
             else:
                 p = 1 # лево
-   
+
     if avoidObstacleCounter != 0 or detourObstacleCounter != 0:
         if avoidObstacleCounter != 0:
             avoidObstacleCounter -= 1
-                    
+
             if p == 1:
                 leftSpeed = -2
                 rightSpeed = 2
             elif p == 0:
                 leftSpeed = 2
                 rightSpeed = -2
-                
+
         elif detourObstacleCounter != 0:
             detourObstacleCounter -= 1
-                    
+
             leftSpeed = 2
             rightSpeed = 2
-            
+
     #print(avoidObstacleCounter)
     #print(detourObstacleCounter)
 
