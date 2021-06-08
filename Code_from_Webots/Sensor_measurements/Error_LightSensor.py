@@ -18,9 +18,9 @@ error_comp_r = (max_val_r - min_val_r) / (min_val_r + max_val_r) * 100
 medium_val_r = (min_val_r + max_val_r) / 2
 
 X1 = []
-for i in range(len(Y2)):
-    if Y2[i] not in X1:
-       X1.append(round(Y2[i]))
+for i in Y2:
+    if i not in X1:
+       X1.append(round(i))
 
 X1.sort()
 Y1 = [0 for i in range(len(X1))]
