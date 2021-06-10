@@ -49,7 +49,8 @@ def inaccuracy_ds(d, error_comp=0.0923):
         return round(d)
 
 
-Y2 = [inaccuracy_ds(float(d_test)) for i in range(3100)]
+size = len(Y2)
+Y2 = [inaccuracy_ds(float(d_test)) for i in range(size)]
 
 X1, Y1 = create_X_Y(Y2)
 
