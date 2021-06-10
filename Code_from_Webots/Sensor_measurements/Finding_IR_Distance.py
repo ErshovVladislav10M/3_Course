@@ -23,7 +23,7 @@ dist_val = [150, 140, 130, 120, 110, 100, 90,
             80, 70, 60, 50, 40, 30, 20, 15]
 
 plt.plot(A, B, color = 'red', marker = 'o', linestyle = '--')
-plt.plot(volt_val, dist_val, color = 'blue', marker = 'o', linestyle = '--')
+plt.plot(volt_val, dist_val, color = 'purple', marker = 'o', linestyle = '--')
 
 plt.ylabel('Расстояние', fontsize = 14)
 plt.xlabel('Вольтаж', fontsize = 14)
