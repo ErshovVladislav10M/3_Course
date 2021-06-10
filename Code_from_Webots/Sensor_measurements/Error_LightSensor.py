@@ -4,31 +4,29 @@ import random
 import os
 
 
+def create_X_Y(Y2):
+    X1 = []
+    for i in Y2:
+        if i not in X1:
+           X1.append(i)
+
+    X1.sort()
+    Y1 = [0 for i in range(len(X1))]
+    for i in Y2:
+        if i in X1:
+           Y1[X1.index(i)] += 1
+
+    return X1, Y1
+
+
 ls_test = '600'
 file_name = os.getcwd()
 
-file_real = open(file_name + '\test_error_sensor\ls_real\ls_mov' + ls_test + '.txt', 'r')
-
+file_real = open(file_name + r'\test_error_sensor\ls_real\ls_mov_' + ls_test + '.txt', 'r')
 Y2 = [float(line) for line in file_real]
 
-max_val_r = max(Y2)
-min_val_r = min(Y2)
+X1, Y1 = create_X_Y(Y2)
 
-error_comp_r = (max_val_r - min_val_r) / (min_val_r + max_val_r) * 100
-medium_val_r = (min_val_r + max_val_r) / 2
-
-X1 = []
-for i in Y2:
-    if i not in X1:
-       X1.append(round(i))
-
-X1.sort()
-Y1 = [0 for i in range(len(X1))]
-for i in Y2:
-    if i in X1:
-       Y1[X1.index(i)] += 1
-
-#plt.plot(X1, Y1, color = 'green', marker = '', linestyle = '-', markerfacecolor = 'green', label = 'На реальном роботе')
 plt.bar(X1, Y1, color = 'blue', label = 'На реальном роботе')
 plt.xticks(X1, X1)
 
@@ -52,16 +50,10 @@ def inaccuracy_ls(light):
         return round(light)
 
 
-X1 = []
-a = min_val_r
-while a <= max_val_r:
-    X1.append(a)
-    a += 1
+size = len(Y2)
+Y2 = [inaccuracy_ls(float(ls_test)) for i in range(size)]
 
-Y1 = [0 for i in range(len(X1))]
-for i in range(len(Y2)):
-    p = int(inaccuracy_ls(float(ls_test)) - min_val_r)
-    Y1[p] += 1
+X1, Y1 = create_X_Y(Y2)
 
 plt.plot(X1, Y1, color = 'purple', marker = '', linestyle = '-', markerfacecolor = 'purple',
          label = 'Заданным распределением с погрешностью 0.67%')
