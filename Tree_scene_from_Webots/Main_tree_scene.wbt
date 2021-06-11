@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.9954339196296126 -0.08475874336555686 -0.04390065003980869 5.323636435991385
-  position 3.1532276791700746 3.1855081690712765 2.2828516346916405
+  orientation 0.9903844488161929 -0.12753456178702172 -0.053605774808672874 5.480453196958036
+  position 3.0730396987840587 2.900363382934605 3.7345419786061105
 }
 TexturedBackground {
 }
@@ -22,7 +22,7 @@ FloorLight {
   translation 2.48 0 -3.72
   pointLightIntensity 20
 }
-DEF vers_test_3 Robot {
+DEF vers_3 Robot {
   translation 2.90084 -0.0212579 -0.655339
   rotation 0 1 0 0.00036
   children [
@@ -99,7 +99,7 @@ DEF vers_test_3 Robot {
       ]
       physics Physics {
       }
-      controller "Kursovay_emit_rec_controller"
+      controller "Roi_robotov_emit_rec_controller"
     }
     DEF rec_main Receiver {
       translation 0 0.125 0
@@ -166,7 +166,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls4 LightSensor {
@@ -189,7 +189,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls3 LightSensor {
@@ -212,7 +212,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls2 LightSensor {
@@ -235,7 +235,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ds DistanceSensor {
@@ -417,7 +417,7 @@ DEF vers_test_3 Robot {
       ]
       endPoint DEF Тело_колеса Solid {
         translation -0.08002783755942654 0.06000121164765673 -0.0200794217068864
-        rotation 0.037697120938061046 -0.037600105882106744 0.9985815735885756 1.5713291007892143
+        rotation 0.037697120938061046 -0.03760010588210674 0.9985815735885756 1.5713291007892143
         children [
           DEF Колесо Shape {
             appearance Rubber {
@@ -469,10 +469,10 @@ DEF vers_test_3 Robot {
     mass 5
   }
   rotationStep 0.261807
-  controller "Kursovay_robotPvtest"
+  controller "Roi_robotov_main_controller"
 }
-DEF vers_test_3 Robot {
-  translation 2.90129 -0.0212579 1.47469
+DEF vers_3 Robot {
+  translation 2.89133 -0.0212579 1.50466
   rotation 0 1 0 0.00036
   children [
     Robot {
@@ -548,7 +548,7 @@ DEF vers_test_3 Robot {
       ]
       physics Physics {
       }
-      controller "Kursovay_emit_rec_controller"
+      controller "Roi_robotov_emit_rec_controller"
     }
     DEF rec_main Receiver {
       translation 0 0.125 0
@@ -615,7 +615,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls4 LightSensor {
@@ -638,7 +638,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls3 LightSensor {
@@ -661,7 +661,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls2 LightSensor {
@@ -684,7 +684,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ds DistanceSensor {
@@ -865,8 +865,8 @@ DEF vers_test_3 Robot {
         }
       ]
       endPoint DEF Тело_колеса Solid {
-        translation -0.08002150881561397 0.059987508546020876 -0.020059728766314698
-        rotation -0.008513465580632465 0.00847686602178678 -0.9999278292188171 4.712041467170291
+        translation -0.08002783755942654 0.06000121164765673 -0.0200794217068864
+        rotation 0.037697120938061046 -0.03760010588210674 0.9985815735885756 1.5713291007892143
         children [
           DEF Колесо Shape {
             appearance Rubber {
@@ -894,8 +894,8 @@ DEF vers_test_3 Robot {
         }
       ]
       endPoint DEF Тело_колеса Solid {
-        translation 0.080054730627363 0.06009337525752701 -0.019923693650015856
-        rotation 0.007149786755254743 -0.006665678211137287 0.999952223500373 1.571428736055691
+        translation 0.08010003630670547 0.060081715277530354 -0.019927381723152768
+        rotation -0.014727462317519605 0.014217886531432125 -0.9997904548235422 4.712248326055139
         children [
           DEF Колесо Shape {
             appearance Rubber {
@@ -918,10 +918,10 @@ DEF vers_test_3 Robot {
     mass 5
   }
   rotationStep 0.261807
-  controller "Kursovay_robotPvtest"
+  controller "Roi_robotov_main_controller"
 }
-DEF vers_test_3 Robot {
-  translation 3.09096 -0.0212579 0.404664
+DEF vers_3 Robot {
+  translation 3.05107 -0.0212579 0.494681
   rotation 0 1 0 0.00036
   children [
     Robot {
@@ -997,7 +997,7 @@ DEF vers_test_3 Robot {
       ]
       physics Physics {
       }
-      controller "Kursovay_emit_rec_controller"
+      controller "Roi_robotov_emit_rec_controller"
     }
     DEF rec_main Receiver {
       translation 0 0.125 0
@@ -1064,7 +1064,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls4 LightSensor {
@@ -1087,7 +1087,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls3 LightSensor {
@@ -1110,7 +1110,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ls2 LightSensor {
@@ -1133,7 +1133,7 @@ DEF vers_test_3 Robot {
       rotationStep 0.261799
       lookupTable [
         0 0 0
-        3 1000 0
+        5 1000 0
       ]
     }
     DEF ds DistanceSensor {
@@ -1314,8 +1314,8 @@ DEF vers_test_3 Robot {
         }
       ]
       endPoint DEF Тело_колеса Solid {
-        translation -0.08002150881561397 0.059987508546020876 -0.020059728766314698
-        rotation -0.008513465580632465 0.00847686602178678 -0.9999278292188171 4.712041467170291
+        translation -0.08002783755942654 0.06000121164765673 -0.0200794217068864
+        rotation 0.037697120938061046 -0.03760010588210674 0.9985815735885756 1.5713291007892143
         children [
           DEF Колесо Shape {
             appearance Rubber {
@@ -1343,8 +1343,8 @@ DEF vers_test_3 Robot {
         }
       ]
       endPoint DEF Тело_колеса Solid {
-        translation 0.080054730627363 0.06009337525752701 -0.019923693650015856
-        rotation 0.007149786755254743 -0.006665678211137287 0.999952223500373 1.571428736055691
+        translation 0.08010003630670547 0.060081715277530354 -0.019927381723152768
+        rotation -0.014727462317519605 0.014217886531432125 -0.9997904548235422 4.712248326055139
         children [
           DEF Колесо Shape {
             appearance Rubber {
@@ -1362,10 +1362,10 @@ DEF vers_test_3 Robot {
       }
     }
   ]
-  name "robot(4)"
+  name "robot(2)"
   physics Physics {
     mass 5
   }
   rotationStep 0.261807
-  controller "Kursovay_robotPvtest"
+  controller "Roi_robotov_main_controller"
 }
