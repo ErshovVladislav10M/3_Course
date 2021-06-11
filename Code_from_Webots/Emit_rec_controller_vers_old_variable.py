@@ -58,7 +58,6 @@ while robot.step(timestep) != -1:
         bearing = dataList[0]
         q = dataList[1]
         rec_main.nextPacket()
-    #print(bearing)
 
     # Передаем сообщение соседям
     p = random.uniform(0, 1)
@@ -79,7 +78,6 @@ while robot.step(timestep) != -1:
         index_robot_rec += 1
         index_robot_rec %= k
         time_wait_switch = 2
-    #print("Robot", *bearingn)
 
     # Перадаем сообщение на основной микрочип
     for i in range(k):
