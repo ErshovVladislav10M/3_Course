@@ -1,0 +1,1371 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.9954339196296126 -0.08475874336555686 -0.04390065003980869 5.323636435991385
+  position 3.1532276791700746 3.1855081690712765 2.2828516346916405
+}
+TexturedBackground {
+}
+RectangleArena {
+  floorSize 10 10
+}
+OilBarrel {
+  translation -0.2 0.44 -1
+}
+OilBarrel {
+  translation 3.06 0.44 -1.436
+  name "oil barrel(1)"
+}
+FloorLight {
+  translation 2.48 0 -3.72
+  pointLightIntensity 20
+}
+DEF vers_test_3 Robot {
+  translation 2.90084 -0.0212579 -0.655339
+  rotation 0 1 0 0.00036
+  children [
+    Robot {
+      children [
+        DEF rec_main Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec_main"
+          type "serial"
+        }
+        DEF emit_main Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit_main"
+          type "serial"
+          range 0.5
+        }
+        DEF rec1 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec1"
+        }
+        DEF rec2 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec2"
+        }
+        DEF emit Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit"
+        }
+      ]
+      physics Physics {
+      }
+      controller "Kursovay_emit_rec_controller"
+    }
+    DEF rec_main Receiver {
+      translation 0 0.125 0
+      children [
+        DEF Тело_ресивера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "rec_main"
+      type "serial"
+    }
+    DEF emit_main Emitter {
+      translation 0 0.125 0
+      children [
+        DEF Тело_эмитера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "emit_main"
+      type "serial"
+    }
+    DEF com Compass {
+      translation 0 0.055 0
+      children [
+        DEF Тело_компаса Shape {
+          appearance LedStrip {
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.02
+          }
+        }
+      ]
+      name "com"
+      boundingObject USE Тело_компаса
+      physics Physics {
+      }
+    }
+    DEF ls1 LightSensor {
+      translation 0.04 0.125 -0.04
+      rotation 0 1 0 0.7854
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls4 LightSensor {
+      translation -0.04 0.125 -0.04
+      rotation 0 1 0 2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls3 LightSensor {
+      translation -0.04 0.125 0.04
+      rotation 0 1 0 -2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls2 LightSensor {
+      translation 0.04 0.125 0.04
+      rotation 0 1 0 -0.7853996938995746
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ds DistanceSensor {
+      translation 0 0.05 -0.1
+      rotation 0 1 0 1.5707796
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      lookupTable [
+        0.2 20 0
+        1.5 150 0
+      ]
+      numberOfRays 2
+      aperture 0.104719
+    }
+    DEF Body Solid {
+      translation 0 0.05 0
+      children [
+        DEF Заднее_колесо HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0 -0.007 0.075
+          }
+          endPoint Solid {
+            translation 0 -8.673617379884035e-19 -1.3877787807814457e-17
+            rotation 1 0 0 0
+            children [
+              DEF Заднее_колесо Transform {
+                translation 0 -0.007 0.075
+                children [
+                  Shape {
+                    appearance Rubber {
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        DEF Распорка_левая_1 Transform {
+          translation -0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_левая_2 Transform {
+          translation -0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_1 Transform {
+          translation 0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_2 Transform {
+          translation 0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Нижнее_основание Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Верхнее_основание Transform {
+          translation 0 0.06 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Распорка_передняя Transform {
+          translation 0 0.03 -0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_задняя Transform {
+          translation 0 0.03 0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "solid(3)"
+      boundingObject USE Заднее_колесо
+      physics Physics {
+      }
+    }
+    DEF wheel1 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation -0.08002783755942654 0.06000121164765673 -0.0200794217068864
+        rotation 0.037697120938061046 -0.037600105882106744 0.9985815735885756 1.5713291007892143
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2(1)"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+    DEF wheel2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation 0.08010003630670547 0.060081715277530354 -0.019927381723152768
+        rotation -0.014727462317519605 0.014217886531432125 -0.9997904548235422 4.712248326055139
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+  ]
+  name "robot(5)"
+  physics Physics {
+    mass 5
+  }
+  rotationStep 0.261807
+  controller "Kursovay_robotPvtest"
+}
+DEF vers_test_3 Robot {
+  translation 2.90129 -0.0212579 1.47469
+  rotation 0 1 0 0.00036
+  children [
+    Robot {
+      children [
+        DEF rec_main Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec_main"
+          type "serial"
+        }
+        DEF emit_main Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit_main"
+          type "serial"
+          range 0.5
+        }
+        DEF rec1 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec1"
+        }
+        DEF rec2 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec2"
+        }
+        DEF emit Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit"
+        }
+      ]
+      physics Physics {
+      }
+      controller "Kursovay_emit_rec_controller"
+    }
+    DEF rec_main Receiver {
+      translation 0 0.125 0
+      children [
+        DEF Тело_ресивера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "rec_main"
+      type "serial"
+    }
+    DEF emit_main Emitter {
+      translation 0 0.125 0
+      children [
+        DEF Тело_эмитера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "emit_main"
+      type "serial"
+    }
+    DEF com Compass {
+      translation 0 0.055 0
+      children [
+        DEF Тело_компаса Shape {
+          appearance LedStrip {
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.02
+          }
+        }
+      ]
+      name "com"
+      boundingObject USE Тело_компаса
+      physics Physics {
+      }
+    }
+    DEF ls1 LightSensor {
+      translation 0.04 0.125 -0.04
+      rotation 0 1 0 0.7854
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls4 LightSensor {
+      translation -0.04 0.125 -0.04
+      rotation 0 1 0 2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls3 LightSensor {
+      translation -0.04 0.125 0.04
+      rotation 0 1 0 -2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls2 LightSensor {
+      translation 0.04 0.125 0.04
+      rotation 0 1 0 -0.7853996938995746
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ds DistanceSensor {
+      translation 0 0.05 -0.1
+      rotation 0 1 0 1.5707796
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      lookupTable [
+        0.2 20 0
+        1.5 150 0
+      ]
+      numberOfRays 2
+      aperture 0.104719
+    }
+    DEF Body Solid {
+      translation 0 0.05 0
+      children [
+        DEF Заднее_колесо HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0 -0.007 0.075
+          }
+          endPoint Solid {
+            translation 0 -8.673617379884035e-19 -1.3877787807814457e-17
+            rotation 1 0 0 0
+            children [
+              DEF Заднее_колесо Transform {
+                translation 0 -0.007 0.075
+                children [
+                  Shape {
+                    appearance Rubber {
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        DEF Распорка_левая_1 Transform {
+          translation -0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_левая_2 Transform {
+          translation -0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_1 Transform {
+          translation 0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_2 Transform {
+          translation 0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Нижнее_основание Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Верхнее_основание Transform {
+          translation 0 0.06 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Распорка_передняя Transform {
+          translation 0 0.03 -0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_задняя Transform {
+          translation 0 0.03 0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "solid(3)"
+      boundingObject USE Заднее_колесо
+      physics Physics {
+      }
+    }
+    DEF wheel1 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation -0.08002150881561397 0.059987508546020876 -0.020059728766314698
+        rotation -0.008513465580632465 0.00847686602178678 -0.9999278292188171 4.712041467170291
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2(1)"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+    DEF wheel2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation 0.080054730627363 0.06009337525752701 -0.019923693650015856
+        rotation 0.007149786755254743 -0.006665678211137287 0.999952223500373 1.571428736055691
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+  ]
+  name "robot(1)"
+  physics Physics {
+    mass 5
+  }
+  rotationStep 0.261807
+  controller "Kursovay_robotPvtest"
+}
+DEF vers_test_3 Robot {
+  translation 3.09096 -0.0212579 0.404664
+  rotation 0 1 0 0.00036
+  children [
+    Robot {
+      children [
+        DEF rec_main Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec_main"
+          type "serial"
+        }
+        DEF emit_main Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit_main"
+          type "serial"
+          range 0.5
+        }
+        DEF rec1 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec1"
+        }
+        DEF rec2 Receiver {
+          translation 0 0.125 0
+          children [
+            DEF Тело_ресивера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "rec2"
+        }
+        DEF emit Emitter {
+          translation 0 0.125 0
+          children [
+            DEF Тело_эмитера Shape {
+              appearance SolarCell {
+              }
+              geometry Box {
+                size 0.007 0.03 0.007
+              }
+            }
+          ]
+          name "emit"
+        }
+      ]
+      physics Physics {
+      }
+      controller "Kursovay_emit_rec_controller"
+    }
+    DEF rec_main Receiver {
+      translation 0 0.125 0
+      children [
+        DEF Тело_ресивера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "rec_main"
+      type "serial"
+    }
+    DEF emit_main Emitter {
+      translation 0 0.125 0
+      children [
+        DEF Тело_эмитера Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.007 0.03 0.007
+          }
+        }
+      ]
+      name "emit_main"
+      type "serial"
+    }
+    DEF com Compass {
+      translation 0 0.055 0
+      children [
+        DEF Тело_компаса Shape {
+          appearance LedStrip {
+          }
+          geometry Cylinder {
+            height 0.01
+            radius 0.02
+          }
+        }
+      ]
+      name "com"
+      boundingObject USE Тело_компаса
+      physics Physics {
+      }
+    }
+    DEF ls1 LightSensor {
+      translation 0.04 0.125 -0.04
+      rotation 0 1 0 0.7854
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls1"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls4 LightSensor {
+      translation -0.04 0.125 -0.04
+      rotation 0 1 0 2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls4"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls3 LightSensor {
+      translation -0.04 0.125 0.04
+      rotation 0 1 0 -2.3561996938995744
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls3"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ls2 LightSensor {
+      translation 0.04 0.125 0.04
+      rotation 0 1 0 -0.7853996938995746
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.701961 1 0.054902
+          }
+          geometry Box {
+            size 0.01 0.03 0.01
+          }
+        }
+      ]
+      name "ls2"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      rotationStep 0.261799
+      lookupTable [
+        0 0 0
+        3 1000 0
+      ]
+    }
+    DEF ds DistanceSensor {
+      translation 0 0.05 -0.1
+      rotation 0 1 0 1.5707796
+      children [
+        DEF Тело_датчика Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds"
+      boundingObject USE Тело_датчика
+      physics Physics {
+      }
+      lookupTable [
+        0.2 20 0
+        1.5 150 0
+      ]
+      numberOfRays 2
+      aperture 0.104719
+    }
+    DEF Body Solid {
+      translation 0 0.05 0
+      children [
+        DEF Заднее_колесо HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0 -0.007 0.075
+          }
+          endPoint Solid {
+            translation 0 -8.673617379884035e-19 -1.3877787807814457e-17
+            rotation 1 0 0 0
+            children [
+              DEF Заднее_колесо Transform {
+                translation 0 -0.007 0.075
+                children [
+                  Shape {
+                    appearance Rubber {
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        DEF Распорка_левая_1 Transform {
+          translation -0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_левая_2 Transform {
+          translation -0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_1 Transform {
+          translation 0.065 0.03 -0.03
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_правая_2 Transform {
+          translation 0.065 0.03 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Нижнее_основание Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Верхнее_основание Transform {
+          translation 0 0.06 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.001
+                radius 0.1
+              }
+            }
+          ]
+        }
+        DEF Распорка_передняя Transform {
+          translation 0 0.03 -0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+        DEF Распорка_задняя Transform {
+          translation 0 0.03 0.09
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 1
+              }
+              geometry Cylinder {
+                height 0.06
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "solid(3)"
+      boundingObject USE Заднее_колесо
+      physics Physics {
+      }
+    }
+    DEF wheel1 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation -0.08002150881561397 0.059987508546020876 -0.020059728766314698
+        rotation -0.008513465580632465 0.00847686602178678 -0.9999278292188171 4.712041467170291
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2(1)"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+    DEF wheel2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis -1 0 0
+        anchor 0 0.06 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF Тело_колеса Solid {
+        translation 0.080054730627363 0.06009337525752701 -0.019923693650015856
+        rotation 0.007149786755254743 -0.006665678211137287 0.999952223500373 1.571428736055691
+        children [
+          DEF Колесо Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.04
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE Колесо
+        physics Physics {
+        }
+      }
+    }
+  ]
+  name "robot(4)"
+  physics Physics {
+    mass 5
+  }
+  rotationStep 0.261807
+  controller "Kursovay_robotPvtest"
+}
