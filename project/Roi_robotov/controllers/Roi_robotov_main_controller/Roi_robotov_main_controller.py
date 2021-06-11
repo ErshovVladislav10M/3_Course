@@ -148,14 +148,11 @@ while robot.step(timestep) != -1:
         bearing += 360
     cos_com = north[0]
     sin_com = north[2]
-    #print(cos_com, sin_com)
 
     # Ищем максимум из датчиков
     light = []
     for i in range(4):
         light.append(inaccuracy_ls(transform_light(ls[i].getValue())))
-    #print(light[0])
-    #print(comp_angle(light)[0])
 
 
     # Расчет азимута движения на источник по четырем сенсорам света
@@ -167,16 +164,13 @@ while robot.step(timestep) != -1:
     q = 0.3
     a_q = 0.5
     d = inaccuracy_ds(ds.getValue())
-    #print(round(d))
-    #print(ds.getValue())
 
     if comp_angle(light) > 90 and comp_angle(light) < 180:
         q = 0
     else:
-        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (light[0] + light[3]))) + a_q * (d / 1000)
+        q = (1 - a_q) * (1 - abs((light[0] - light[3]) / (1 + light[0] + light[3]))) + a_q * (d / 1000)
 
     # Передаем сообщение на микрочип для связи
-    #print(bearing)
     message = struct.pack("dd", bearing, q)
     emit_main.send(message)
 
@@ -188,7 +182,6 @@ while robot.step(timestep) != -1:
             bearing_comrades[i][0] = dataList[0]
             bearing_comrades[i][1] = dataList[1]
             rec_main.nextPacket()
-    #print("Robot", *bearingn)
 
     # Считаем среднюю уверенность соседей q_sr
     q_sum = 0
@@ -203,7 +196,6 @@ while robot.step(timestep) != -1:
         q_sr = q_sum / k_i
     else:
         q_sr = 1
-    #print ("q_sr", q_sr)
 
     # Считаем средневзвешенный курс соседей dbearingn_sr_w
     dbearingn_sr_w = 0
@@ -257,7 +249,6 @@ while robot.step(timestep) != -1:
             dbearingG += 10
         elif j == 1:
             dbearingG -= 10
-    # print(j)
 
     if dbearingG > 360:
         dbearingG -= 360
@@ -283,7 +274,6 @@ while robot.step(timestep) != -1:
         rightSpeed = 0
 
     # Обход препятствий
-    #print(p, d)
     if d <= 30 and avoidObstacleCounter == 0 and detourObstacleCounter == 0:
         avoidObstacleCounter = 30
         detourObstacleCounter = 150
@@ -309,9 +299,6 @@ while robot.step(timestep) != -1:
 
             leftSpeed = 2
             rightSpeed = 2
-
-    #print(avoidObstacleCounter)
-    #print(detourObstacleCounter)
 
     # Отправляем значение на моторы
     wheels[0].setVelocity(leftSpeed)

@@ -58,7 +58,6 @@ while robot.step(timestep) != -1:
         bearing = dataList[0]
         confidence_bearing = dataList[1]
         rec_main.nextPacket()
-    #print(bearing)
 
     # Передаем сообщение соседям
     p = random.uniform(0, 1)
@@ -79,7 +78,6 @@ while robot.step(timestep) != -1:
         index_robot_rec += 1
         index_robot_rec %= num_of_robots
         time_wait_switch = 2
-    #print("Robot", *bearing_comrades)
 
     # Перадаем сообщение на основной микрочип
     for i in range(num_of_robots):
